@@ -3,27 +3,8 @@
   var app = express();
   http = require('http').Server(app),
   io = require('socket.io').listen(http)
-  var url = require("url");
   var port = Number(process.env.PORT || 5000)
-  var pg = require('pg')
-  var moment = require('moment');
-   var multipart = require("multipart")
-  , sys = require("sys")
-  ,cors = require('cors')
-  , fs = require('fs')
-  , Dropbox = require('dropbox');
-
-  var knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host     : '127.0.0.1',
-    user     : 'postgres',
-    password : 'rohit',
-    database : 'video'
-  }
-});
-
-
+  var cors = require('cors');
 
   http.listen(port, function() {
     console.log('Listening on *:' + port);

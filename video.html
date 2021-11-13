@@ -14,7 +14,7 @@
 <style>
 
 #convo{
- 
+
  display:none;
  z-index:10022!important
 }
@@ -69,7 +69,7 @@ border-radius:50% !important;
   <b><font color="white"><p>USERS</p></b>
   <div id="users"></div></font>
 </div>
-<div id="convo" style="float:right"> 
+<div id="convo" style="float:right">
 <div><textarea id="conversation" name="" style="width:300px" cols="10" rows="4"></textarea></div>
   <input id="data" type="text" style="width:300px;height:50px"value="Ask your question here" onFocus="if(this.value=='Ask your question here') { this.value=''; }" onBlur="if(this.value == ''){this.value='Ask your question here';}"/>
   <br>
@@ -91,7 +91,7 @@ border-radius:50% !important;
                   <li id="hang"><a href="#">HangUp</a></li>
 		  <li id="share"><a href="#">Share</a></li>
 		  <li id="name"><a href="#"></a></li>
-				  
+
                   </ul>
                 <p class="navbar-text pull-right"id ="nav_room"></p>
               </div>
@@ -126,7 +126,7 @@ border-radius:50% !important;
       <a href="#" id="startButton">Join</a>
        <div id="infoBox">
         <hr />
-        <p>When You click on join room a sharable Instruction will be generated</p><p> which you have to share with your friend to connect!.</p>
+        <p>When You click on join room , share the URL <https://hackrtc.herokuapp.com> and room name you entered, and Ask your peer to enter the same room to connect</p><p> which you have to share with your friend to connect!.</p>
 		<br />
        </div>
     </div>
@@ -135,8 +135,8 @@ border-radius:50% !important;
   <div id="spinner">
   <progress id="progressBar"></progress>
 </div>
- 
- 
+
+
     <script src="/static/js/jquery.js"></script>
    <script src="/static/js/lib/adapter.js"></script>
    <script src="/socket.io/socket.io.js"></script>
@@ -146,11 +146,11 @@ border-radius:50% !important;
    <script src="/static/js/drag_local.js"></script>
       <script src="/static/js/drag_remote.js"></script>
 
-  <script> 
+  <script>
   $(document).ready(function(){
-  
+
   $('#sh').hide();
- 
+
   $('#hang').click(function(){
   $('#sh').hide();
   hangup();
@@ -164,12 +164,12 @@ border-radius:50% !important;
   $('#room_join').children().fadeOut();
   $('.side').css('display','block');
   $('#convo').css('display','block');
-  join_room($('#roomName').val(),$('#Name').val(),{video: true, audio: true});  
+  join_room($('#roomName').val(),$('#Name').val(),{video: true, audio: true});
 
   })
-  
-  
-  
+
+
+
   })
   </script>
 </body>

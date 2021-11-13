@@ -1,6 +1,6 @@
 {
   "name": "video_chat",
-  "description": "Video_chat for Actozen",
+  "description": "Video_chat using WebRTC",
   "keywords": [
     "javascript",
     "server",
@@ -10,7 +10,7 @@
     "name": "Rohit Jain"
   },
   "engines": {
-    "node": ">=0.10.26"
+    "node": "=0.10.26"
   },
   "dependencies": {
     "socket.io": "==0.9.16",

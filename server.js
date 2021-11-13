@@ -22,7 +22,7 @@
     database : 'video'
   }
 });
-  
+
 
 
   http.listen(port, function() {
@@ -57,14 +57,11 @@ var turn_stun = {
         url: "stun:23.21.150.121"
     }, {
         url: "stun:stun.l.google.com:19302"
-    }, {
-        url: "turn:xxx@128.199.132.46:3478",
-        credential: "xxx"
     }]
 };
 
 
- 
+
   app.use(function() {
     app.use(express.static(__dirname + '/'));
   });
@@ -75,9 +72,9 @@ var turn_stun = {
   });
 
   io.configure(function() {
-    io.enable('browser client minification'); 
-    io.enable('browser client etag'); 
-    io.enable('browser client gzip'); 
+    io.enable('browser client minification');
+    io.enable('browser client etag');
+    io.enable('browser client gzip');
     io.set('transports', ['websocket']);
   });
 
@@ -107,7 +104,7 @@ var turn_stun = {
           if(a==2)
             socket.broadcast.to(room).emit('message', message,socket.id,a);
           else
-             socket.broadcast.to(room).emit('message', message,socket.id);  
+             socket.broadcast.to(room).emit('message', message,socket.id);
        }
     socket.broadcast.to(room).emit('message', message);
   }
@@ -129,7 +126,7 @@ var turn_stun = {
        else {
       socket.emit('full', room);
     }
-    
+
   }
 
   function exitRoom(socket, room) {
@@ -149,34 +146,34 @@ io.set('log level', 1);
 
   io.sockets.on('connection', function(socket) {
 
- 
- 
- 
+
+
+
    sock_connection.push(socket.id);
-   //Emit the stun and turn urls to main.js.. somewhats Hides our turn URL from naked eys,but still accessible   
+   //Emit the stun and turn urls to main.js.. somewhats Hides our turn URL from naked eys,but still accessible
     socket.emit('stun', turn_stun);
-    
-   
-    
+
+
+
      /*if (urlRoom) {
       createOrJoin(socket, urlRoom);
       urlRoom = false;
     }*/
 
-   
+
 
     socket.on('create or join', function(room,name) {
       socket.urlRoom = room;
       socket.name=name;
       createOrJoin(socket, socket.urlRoom);
     });
-    
+
         socket.on('adduser', function () {
 
         //If Current Room don't exists , usernames[urlRoom] is defined
         if (typeof (global.usernames[socket.urlRoom]) == 'undefined')
             global.usernames[socket.urlRoom] = [];
-       
+
         global.usernames[socket.urlRoom].push(socket.name);
 	socket.emit('updatechat', 'SERVER>>', 'you have connected');
 	socket.username;
@@ -188,7 +185,7 @@ io.set('log level', 1);
       socket.on('sendchat', function (data) {
         console.log('sendchat:' + data);
         io.sockets.in(socket.urlRoom).emit('updatechat', socket.name, data);
-    });       
+    });
 
      socket.on('message to room', function(message, room) {
       emitToRoom(socket, message, room);
@@ -199,7 +196,7 @@ io.set('log level', 1);
 
     socket.on('disconnect', function (data) {
 
-        //remove from array username after disconnect  
+        //remove from array username after disconnect
         if (socket.name) {
             var index = global.usernames[socket.urlRoom].indexOf(socket.name);
 
